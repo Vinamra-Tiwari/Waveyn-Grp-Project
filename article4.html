@@ -1,308 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article</title>
-    <style>
-        :root {
-            --primary-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            --content-width: 700px;
-            --text-color: #292929;
-            --light-gray: #757575;
-            --very-light-gray: #f8f8f8;
-            --accent-color: #03a87c;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--primary-font);
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: white;
-        }
-        
-        header {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            background-color: white;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            max-width: var(--content-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
-        .logo {
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .nav-links a {
-            color: var(--light-gray);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        
-        .nav-links a:hover {
-            color: var(--text-color);
-        }
-        
-        main {
-            max-width: var(--content-width);
-            margin: 0 auto;
-            padding: 2rem 20px;
-        }
-        
-        .article-meta {
-            margin-bottom: 2rem;
-        }
-        
-        .article-category {
-            color: var(--accent-color);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.05rem;
-            margin-bottom: 1rem;
-        }
-        
-        .article-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .article-subtitle {
-            font-size: 1.25rem;
-            color: var(--light-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.4;
-        }
-        
-        .author-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--very-light-gray);
-            margin-right: 15px;
-            overflow: hidden;
-        }
-        
-        .author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .author-details {
-            flex: 1;
-        }
-        
-        .author-name {
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-        
-        .article-date {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .article-date span {
-            margin-right: 5px;
-        }
-        
-        .article-reading-time::before {
-            content: "·";
-            margin: 0 5px;
-        }
-        
-        .featured-image {
-            width: 100%;
-            margin-bottom: 2rem;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .featured-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .article-content {
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-        
-        .article-content p {
-            margin-bottom: 1.5rem;
-        }
-        
-        .article-content h2 {
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem 0;
-            font-weight: 600;
-        }
-        
-        .article-content h3 {
-            font-size: 1.5rem;
-            margin: 1.5rem 0 1rem 0;
-            font-weight: 600;
-        }
-        
-        .article-content ol,
-        .article-content ul {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .article-content li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .article-content blockquote {
-            border-left: 3px solid var(--accent-color);
-            padding-left: 20px;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--light-gray);
-        }
-        
-        .article-content code {
-            background-color: var(--very-light-gray);
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9em;
-        }
-        
-        .article-content pre {
-            background-color: var(--very-light-gray);
-            padding: 1rem;
-            border-radius: 5px;
-            overflow-x: auto;
-            margin-bottom: 1.5rem;
-        }
-        
-        .article-content pre code {
-            background-color: transparent;
-            padding: 0;
-        }
-        
-        .article-reactions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .reaction-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .reaction-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--light-gray);
-            display: flex;
-            align-items: center;
-        }
-        
-        .reaction-button svg {
-            margin-right: 5px;
-        }
-        
-        .share-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .share-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--light-gray);
-        }
-        
-        footer {
-            max-width: var(--content-width);
-            margin: 0 auto;
-            padding: 2rem 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            color: var(--light-gray);
-            font-size: 0.9rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        @media (max-width: 768px) {
-            .article-title {
-                font-size: 2rem;
-            }
-            
-            .article-content {
-                font-size: 1.1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .article-title {
-                font-size: 1.8rem;
-            }
-            
-            .article-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .article-content {
-                font-size: 1rem;
-            }
-            
-            .header-container {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            .nav-links {
-                width: 100%;
-                justify-content: space-between;
-            }
-        }
-    </style>
+    <link id="theme-style" rel="stylesheet" href="articlelight.css" />
 </head>
 <body>
     <header>
@@ -312,138 +15,148 @@
                 <a href="#">Home</a>
                 <a href="#">Articles</a>
                 <a href="#">About</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
             </nav>
         </div>
     </header>
-    
-    <main>
-        <article>
-            <div class="article-meta">
-                <div class="article-category">Technology</div>
-                <h1 class="article-title">The Future of Web Development: Trends to Watch in 2025</h1>
-                <h2 class="article-subtitle">Exploring the evolving landscape of web technologies and what developers need to know to stay ahead.</h2>
-                
-                <div class="author-info">
+
+<main>
+    <article>
+        <div class="article-meta">
+            <div class="article-category">Technology</div>
+            <h1 class="article-title">Skype is Dead: Why Microsoft Finally Pulled the Plug in 2025</h1>
+            <h2 class="article-subtitle">Examining the downfall of a once-revolutionary communication platform and the market shifts that led to its ultimate demise.</h2>
+            
+             <div class="author-info">
                     <div class="author-avatar">
-                        <img src="/api/placeholder/400/400" alt="Author Avatar">
+                        <img src="./Images/Images/Author.png" alt="Author Avatar">
                     </div>
-                    <div class="author-details">
-                        <div class="author-name">Vinamra Tiwari</div>
-                        <div class="article-date">
-                            <span>May 15, 2025</span>
-                            <span class="article-reading-time">6 min read</span>
-                        </div>
+                <div class="author-details">
+                    <div class="author-name">Vinamra Tiwari</div>
+                    <div class="article-date">
+                        <span>May 15, 2025</span>
+                        <span class="article-reading-time">6 min read</span>
                     </div>
                 </div>
-            </div>
-            
-            <div class="featured-image">
-                <img src="/api/placeholder/700/400" alt="Web Development Technologies">
-            </div>
-            
-            <div class="article-content">
-                <p>Web development continues to evolve at a remarkable pace. As we move further into 2025, several key trends are reshaping how we build and experience the web. From AI-powered development tools to new frameworks that prioritize performance, the landscape is changing in exciting ways.</p>
-                
-                <p>For developers looking to stay competitive, understanding these shifts isn't just advantageous—it's essential. This article explores the most significant trends that are defining web development this year and offers insights into how you can adapt your skills accordingly.</p>
-                
-                <h2>1. AI-Assisted Development</h2>
-                
-                <p>Artificial intelligence isn't just a buzzword anymore—it's fundamentally changing how developers work. AI-powered coding assistants can now generate entire components, suggest optimizations, and even debug complex issues with impressive accuracy.</p>
-                
-                <p>Tools like GitHub Copilot and similar AI pair programmers have become increasingly sophisticated, handling not just simple code completion but understanding larger architectural patterns. This doesn't mean developers are becoming obsolete—rather, their role is evolving to focus more on system design and problem-solving while AI handles more routine coding tasks.</p>
-                
-                <blockquote>
-                    "AI isn't replacing developers. It's upgrading their capabilities and letting them focus on the most creative aspects of building software."
-                </blockquote>
-                
-                <h2>2. WebAssembly Going Mainstream</h2>
-                
-                <p>WebAssembly (Wasm) has moved beyond experimental status to become a critical technology for high-performance web applications. By allowing code written in languages like Rust, C++, and Go to run in the browser at near-native speeds, Wasm is enabling web applications that previously would have required desktop software.</p>
-                
-                <p>We're seeing Wasm adoption in:</p>
-                
-                <ul>
-                    <li>Browser-based video and image editing tools</li>
-                    <li>Complex data visualization and analytics platforms</li>
-                    <li>Gaming and 3D rendering engines</li>
-                    <li>Scientific computing applications</li>
-                </ul>
-                
-                <h2>3. The Rise of Edge Computing</h2>
-                
-                <p>Edge computing is transforming how web applications are deployed and executed. By running code at the network edge—closer to users rather than in centralized data centers—developers can create experiences that are faster, more reliable, and often more cost-effective.</p>
-                
-                <p>Platforms offering edge functions and edge databases have made it simpler for developers to build globally distributed applications without managing complex infrastructure. This approach is particularly valuable for applications requiring low latency or those serving users across multiple geographic regions.</p>
-                
-                <h3>Benefits of Edge Computing:</h3>
-                
-                <ol>
-                    <li>Reduced latency for faster user experiences</li>
-                    <li>Improved reliability through distribution</li>
-                    <li>Better cost efficiency for many use cases</li>
-                    <li>Simplified global deployment strategies</li>
-                </ol>
-                
-                <h2>4. Web Components and Micro-Frontends</h2>
-                
-                <p>The component-based architecture that revolutionized frontend development is evolving further. Web Components—a set of standardized browser APIs—are gaining traction as a way to create truly reusable UI elements that work across frameworks.</p>
-                
-                <p>Simultaneously, micro-frontend architectures are becoming more common for large applications, allowing teams to work independently on different parts of the same site using their preferred tools and frameworks.</p>
-                
-                <p>This approach offers greater flexibility and scalability for organizations, especially as frontends grow increasingly complex and team sizes expand.</p>
-                
-                <h2>5. Accessibility as a Priority</h2>
-                
-                <p>Web accessibility is finally getting the attention it deserves. More companies are recognizing that building accessible websites isn't just ethically right—it's good business and often legally required.</p>
-                
-                <p>Modern development tools are increasingly incorporating accessibility features by default, making it easier for developers to create inclusive experiences without specialized knowledge. Automated testing tools for accessibility compliance have also improved dramatically, helping catch issues earlier in the development process.</p>
-                
-                <h2>Conclusion</h2>
-                
-                <p>The web development landscape of 2025 offers exciting possibilities for creating faster, more powerful, and more inclusive digital experiences. By embracing these trends—AI assistance, WebAssembly, edge computing, component-based architectures, and accessibility—developers can position themselves at the forefront of the industry.</p>
-                
-                <p>The key to success will be balancing adoption of these new technologies with a focus on fundamentals. The web's core principles of progressive enhancement, performance, and universal access remain as important as ever, even as the tools we use to achieve them evolve.</p>
-            </div>
-            
-            <div class="article-reactions">
-                <div class="reaction-buttons">
-                    <button class="reaction-button">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
-                        </svg>
-                        152
-                    </button>
-                    <button class="reaction-button">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" stroke="currentColor" stroke-width="2" fill="none"/>
-                        </svg>
-                        24
-                    </button>
-                </div>
-                <div class="share-buttons">
-                    <button class="share-button">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 8A3 3 0 1 0 18 2a3 3 0 0 0 0 6zM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <button class="share-button">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 12V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8M16 18l4-4-4-4M20 14h-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </article>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <div>© 2025 YourBlog. All rights reserved.</div>
-            <div>
-                <a href="#" style="color: inherit; margin-left: 15px;">Privacy</a>
-                <a href="#" style="color: inherit; margin-left: 15px;">Terms</a>
             </div>
         </div>
-    </footer>
+        
+        <!-- Added new image here -->
+            <div class="featured-image">
+                <img src="./Images/Images/article4.jpg" alt="Web Development Technologies">
+            </div>
+        
+        <div class="article-content">
+            <p>After almost 22 years of connecting people across the globe, Skype has finally reached its end. Microsoft's recent announcement confirming the shutdown of the pioneering communication platform marks the conclusion of an era that transformed how we communicate online. Once the synonym for video calling, Skype's blue and white logo will soon be relegated to the digital history books.</p>
+            
+            <p>For many who grew up using Skype to connect with family overseas or conduct their first remote job interviews, this shutdown represents more than just another tech product discontinuation—it's the end of a service that fundamentally changed global communication. This article examines why Microsoft finally made this difficult decision and what it means for the evolution of digital communication.</p>
+            
+            <h2>1. The Rise of Integrated Competitors</h2>
+            
+            <p>Skype's downfall didn't happen overnight. For years, the platform has been losing ground to competitors that offered more seamless integration with other productivity and social tools. Microsoft Teams, Zoom, Google Meet, and FaceTime have all carved out significant portions of Skype's once-dominant market share.</p>
+            
+            <p>What made these alternatives more appealing wasn't necessarily superior technology, but rather their ecosystem integration. Teams became embedded in Microsoft 365, Zoom focused on business-friendly features, Google Meet integrated with Google Workspace, and FaceTime became the default for Apple users. Meanwhile, Skype increasingly felt like a standalone product without a clear place in users' digital lives.</p>
+            
+            <blockquote>
+                "Skype wasn't defeated by a better communication tool—it was outflanked by platforms that made communication just one feature within larger ecosystems."
+            </blockquote>
+            
+            <h2>2. Failed Attempts at Modernization</h2>
+            
+            <p>Since acquiring Skype in 2011 for $8.5 billion, Microsoft made several attempts to revitalize the platform. From complete redesigns to feature overhauls, the company invested significantly in keeping Skype relevant. However, each iteration seemed to alienate existing users while failing to attract new ones.</p>
+            
+            <p>The modernization challenges included:</p>
+            
+            <ul>
+                <li>Confusing UI changes that disrupted user experience</li>
+                <li>Inconsistent performance across different devices</li>
+                <li>Slower adoption of emerging technologies like AR filters</li>
+                <li>Identity confusion between consumer and business positioning</li>
+            </ul>
+            
+            <h2>3. The Teams Takeover Strategy</h2>
+            
+            <p>Perhaps the most significant factor in Skype's demise was Microsoft's own strategic shift toward Teams. Initially positioned as a Slack competitor for workplace collaboration, Teams rapidly expanded to include all of Skype's core functionality while adding additional features tailored for both business and personal use.</p>
+            
+            <p>By 2023, Microsoft had already begun quietly migrating Skype for Business users to Teams, signaling the company's long-term intentions. The pandemic-driven boom in remote communication tools only accelerated this transition, with Teams experiencing exponential growth while Skype usage plateaued and eventually declined.</p>
+            
+            <h3>Key Milestones in Teams' Ascendancy:</h3>
+            
+            <ol>
+                <li>2017: Teams launches with basic chat and meeting capabilities</li>
+                <li>2020: Teams user base explodes during the pandemic</li>
+                <li>2022: Consumer features added to Teams personal version</li>
+                <li>2024: Microsoft announces integration of advanced AI communication features exclusively for Teams</li>
+            </ol>
+            
+            <h2>4. The Mobile Messaging Revolution</h2>
+            
+            <p>While business users migrated to platforms like Teams and Zoom, Skype's consumer base was simultaneously eroded by mobile-first messaging apps. WhatsApp, Telegram, Signal, and platform-specific tools like iMessage captured the casual communication market with more convenient, mobile-optimized experiences.</p>
+            
+            <p>These mobile platforms offered simplicity and immediacy that Skype struggled to match. The days of scheduling a Skype call gave way to spontaneous video chats initiated directly from messaging conversations, making the separate Skype app feel increasingly redundant for most users.</p>
+            
+            <p>By the time Skype attempted to modernize its mobile experience, user habits had already solidified around these alternatives, making it nearly impossible to recapture market share.</p>
+            
+            <h2>5. Technical Debt and Platform Fragmentation</h2>
+            
+            <p>Behind the scenes, Skype faced significant technical challenges. The original peer-to-peer architecture that made Skype revolutionary in 2003 became increasingly problematic as communication shifted to mobile devices with battery constraints and intermittent connectivity.</p>
+            
+            <p>Microsoft's efforts to migrate Skype to more modern cloud infrastructure resulted in a fragmented platform experience, with different versions offering inconsistent features across various devices. This technical debt accumulated over years, making each update more complex and each new feature more difficult to implement consistently.</p>
+            
+            <h2>Conclusion</h2>
+            
+            <p>Skype's shutdown represents not just the end of a product but a larger lesson about technology evolution. Even revolutionary platforms must continuously adapt to changing user expectations and technological landscapes. Despite its pioneering status and once-ubiquitous presence, Skype ultimately couldn't keep pace with the rapid transformation of digital communication.</p>
+            
+            <p>As we say goodbye to those familiar notification sounds and the pixelated video calls that connected countless people across distances, Skype's legacy lives on in the features it pioneered—now standard in virtually every communication platform. While the service may be shutting down, its impact on how we connect in a digital world remains indelible, even as we move forward with new tools designed for our increasingly connected future.</p>
+        </div>
+        
+        <div class="article-reactions">
+            <div class="reaction-buttons">
+                <button class="reaction-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    152
+                </button>
+                <button class="reaction-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    24
+                </button>
+            </div>
+            <div class="share-buttons">
+                <button class="share-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 8A3 3 0 1 0 18 2a3 3 0 0 0 0 6zM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="share-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 12V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8M16 18l4-4-4-4M20 14h-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </article>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div>© 2025 YourBlog. All rights reserved.</div>
+        <div>
+            <a href="#" style="color: inherit; margin-left: 15px;">Privacy</a>
+            <a href="#" style="color: inherit; margin-left: 15px;">Terms</a>
+        </div>
+    </div>
+</footer>
+<script>
+    function toggleTheme() {
+        const themeLink = document.getElementById('theme-style');
+        const currentTheme = themeLink.getAttribute('href');
+        const newTheme = currentTheme === 'articlelight.css' ? 'articledark.css' : 'articlelight.css';
+        themeLink.setAttribute('href', newTheme);
+    }
+</script>
 </body>
 </html>
