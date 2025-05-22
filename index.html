@@ -14,6 +14,187 @@
             height: 100% !important;
             object-fit: cover;
         }
+        /* Profile dropdown styles */
+        .user-profile-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-dropdown {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            border-radius: 8px;
+            padding: 8px 0;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid #e1e5e9;
+        }
+
+        .profile-dropdown a {
+            color: #374151;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .profile-dropdown a:hover {
+            background-color: #f3f4f6;
+        }
+
+        .user-profile-container:hover .profile-dropdown {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .user-avatar {
+            cursor: pointer;
+        }
+
+        /* Featured Articles Carousel Styles */
+        .featured-carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 500%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            width: 20%;
+            height: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            color: white;
+            width: 100%;
+        }
+
+        .slide-tag {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .slide-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .slide-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .slide-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev {
+            left: 2rem;
+        }
+
+        .carousel-nav.next {
+            right: 2rem;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .featured-section-title {
+            text-align: left;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #9B59B6;
+        }
     </style>
 </head>
 <body class="light-mode">
@@ -45,16 +226,97 @@
             <button class="icon-btn">
                 <i class="fas fa-bell"></i>
             </button>
-            <div class="user-avatar">JD</div>
+            <div class="user-profile-container">
+                 <div class="user-avatar">JD</div>
+                 <div class="profile-dropdown">
+                     <a href="#profile">My Profile</a>
+                     <a href="#activity">My Activity</a>
+                     <a href="#settings">Settings</a>
+                     <a href="#logout">Log Out</a>
+                </div>
+            </div>
             <button class="theme-toggle" onclick="toggleTheme()">
                 <i class="fas fa-moon" id="theme-icon"></i>
             </button>
         </div>
     </nav>
 
-    <section class="hero-section">
-        <h1>Discover stories that matter to you</h1>
-        <p>Join thousands of readers and writers sharing their insights and experiences</p>
+    <section class="featured-section">
+        <h2 class="featured-section-title">Featured Articles</h2>
+        <div class="featured-carousel">
+            <div class="carousel-container" id="carousel-container">
+                <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/400?random=11');">
+                    <div class="slide-content">
+                        <span class="slide-tag">AI Technology</span>
+                        <h3 class="slide-title">The Future of AI: How Machine Learning is Reshaping Industries</h3>
+                        <div class="slide-meta">
+                            <span><i class="fas fa-clock"></i> 7 min read</span>
+                            <span><i class="fas fa-heart"></i> 1.2k</span>
+                            <span><i class="fas fa-user"></i> Sarah Chen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/400?random=12');">
+                    <div class="slide-content">
+                        <span class="slide-tag">Blockchain</span>
+                        <h3 class="slide-title">Web3 Revolution: Understanding Decentralized Applications</h3>
+                        <div class="slide-meta">
+                            <span><i class="fas fa-clock"></i> 9 min read</span>
+                            <span><i class="fas fa-heart"></i> 856</span>
+                            <span><i class="fas fa-user"></i> Alex Kumar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/400?random=13');">
+                    <div class="slide-content">
+                        <span class="slide-tag">Cybersecurity</span>
+                        <h3 class="slide-title">Zero Trust Architecture: The New Standard for Enterprise Security</h3>
+                        <div class="slide-meta">
+                            <span><i class="fas fa-clock"></i> 6 min read</span>
+                            <span><i class="fas fa-heart"></i> 654</span>
+                            <span><i class="fas fa-user"></i> Maria Rodriguez</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/400?random=14');">
+                    <div class="slide-content">
+                        <span class="slide-tag">Quantum Computing</span>
+                        <h3 class="slide-title">Quantum Supremacy: Breaking the Barriers of Classical Computing</h3>
+                        <div class="slide-meta">
+                            <span><i class="fas fa-clock"></i> 12 min read</span>
+                            <span><i class="fas fa-heart"></i> 923</span>
+                            <span><i class="fas fa-user"></i> Dr. James Wilson</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/400?random=15');">
+                    <div class="slide-content">
+                        <span class="slide-tag">Cloud Computing</span>
+                        <h3 class="slide-title">Serverless Architecture: Building Scalable Applications Without Servers</h3>
+                        <div class="slide-meta">
+                            <span><i class="fas fa-clock"></i> 8 min read</span>
+                            <span><i class="fas fa-heart"></i> 732</span>
+                            <span><i class="fas fa-user"></i> Emily Zhang</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-nav prev" onclick="prevSlide()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav next" onclick="nextSlide()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="carousel-dots">
+                <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                <div class="carousel-dot" onclick="goToSlide(3)"></div>
+                <div class="carousel-dot" onclick="goToSlide(4)"></div>
+            </div>
+        </div>
     </section>
 
     <section class="content">
@@ -217,7 +479,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="load-more">
             <button class="load-more-btn">Load More Articles</button>
         </div>
@@ -268,6 +530,35 @@
     </footer>
 
     <script>
+        let currentSlide = 0;
+        const totalSlides = 5;
+
+        function updateCarousel() {
+            const container = document.getElementById('carousel-container');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            container.style.transform = `translateX(-${currentSlide * 20}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
         function toggleTheme() {
             const body = document.body;
             const stylesheet = document.getElementById('theme-stylesheet');
